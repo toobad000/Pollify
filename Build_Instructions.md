@@ -1,7 +1,7 @@
 # Pollify — Build Instructions
 
 ## Getting Started
-
+ 
 ### 1. Copy Source Files
 Copy the website source code to your XAMPP web root. The path to `index.php` should be:
 ```
