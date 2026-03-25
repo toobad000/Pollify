@@ -6,12 +6,12 @@ Pollify is a full-stack web application that lets users create custom polls, sha
 
 ---
 
-## Screenshots
+## Homepage
 
-<!-- Add a screenshot of the homepage here -->
-<!-- Example: ![Pollify Homepage](screenshots/homepage.png) -->
-
-*Screenshot coming soon.*
+<div align="center">
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/index1.jpg" alt="Pollify Homepage - Top" width="100%"/>
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/index2.jpg" alt="Pollify Homepage - Bottom" width="100%"/>
+</div>
 
 ---
 
@@ -22,6 +22,28 @@ Pollify is a full-stack web application that lets users create custom polls, sha
 - **User authentication** — Secure register/login system with session management
 - **Share polls** — Each poll gets a shareable link for distribution
 - **Responsive UI** — Usable across desktop and mobile browsers
+
+---
+
+## Public Polls & Live Results
+
+All public polls are listed and display live vote counts and statistics as users vote. Results update in real time without requiring a page refresh.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/public_polls.jpg" alt="Public Polls with Vote Statistics" width="100%"/>
+</div>
+
+---
+
+## User Authentication
+
+Pollify includes a full authentication system — users can sign up for an account, log in securely, and access their personal polls. Passwords are hashed server-side using PHP's `password_hash` / `password_verify`. Sessions persist the logged-in state across pages.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/signup.jpg" alt="Sign Up Form" width="32%"/>
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/login.jpg" alt="Login Form" width="32%"/>
+  <img src="https://raw.githubusercontent.com/toobad000/Pollify/main/screenshots/logged_in.jpg" alt="Logged In State" width="32%"/>
+</div>
 
 ---
 
@@ -60,32 +82,9 @@ This project was my first end-to-end full-stack application. Key things I worked
 
 ---
 
-## Getting Started
+## Setup
 
-### Prerequisites
-
-- Apache web server
-- PHP 7.4+
-- MySQL 5.7+
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/Pollify.git
-
-# Move into your Apache web root (e.g. /var/www/html)
-cp -r Pollify/ /var/www/html/pollify
-
-# Import the database schema
-mysql -u root -p < db/schema.sql
-
-# Configure your database credentials
-cp config/config.example.php config/config.php
-# Edit config.php with your MySQL credentials
-```
-
-Then visit `http://localhost/pollify` in your browser.
+See [SETUP.md](SETUP.md) for full build and database instructions.
 
 ---
 
