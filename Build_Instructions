@@ -1,0 +1,108 @@
+# Pollify — Build Instructions
+
+## Getting Started
+
+### 1. Copy Source Files
+Copy the website source code to your XAMPP web root. The path to `index.php` should be:
+```
+C:\xampp\htdocs\online-voting-poll-system\index.php
+```
+
+### 2. Start XAMPP Services
+Run XAMPP and enable both **Apache** and **MySQL** services.
+
+> **Note:** If MySQL fails to start, check if `mysqld.exe` is already running in Task Manager. If it is, stop it and try starting MySQL again from XAMPP.
+
+### 3. Verify the Site Loads
+Open `C:\xampp\htdocs\online-voting-poll-system\index.php` and confirm all page elements load correctly. SQL functionality is not yet active — continue with the steps below.
+
+### 4. Open phpMyAdmin
+Navigate to `http://localhost/phpmyadmin` in your browser.
+
+### 5. Run the Database Setup SQL
+Click **SQL** in the top navbar, paste the following commands, then click **Go**:
+
+```sql
+-- Create new database
+CREATE DATABASE polls_db;
+
+-- Use the new database
+USE polls_db;
+
+-- Create users table
+CREATE TABLE users (
+    user_id       INT AUTO_INCREMENT PRIMARY KEY,
+    username      VARCHAR(50)  UNIQUE NOT NULL,
+    email         VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at    DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_login    DATETIME,
+    permissions   INT DEFAULT 2
+);
+
+-- Create polls table
+CREATE TABLE polls (
+    poll_id    INT AUTO_INCREMENT PRIMARY KEY,
+    user_id    INT,
+    prompt     TEXT         NOT NULL,
+    option_a   VARCHAR(255) NOT NULL,
+    option_b   VARCHAR(255) NOT NULL,
+    a_count    INT     DEFAULT 0,
+    b_count    INT     DEFAULT 0,
+    is_public  BOOLEAN DEFAULT TRUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    voter_ids  TEXT    DEFAULT '',
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+```
+
+### 6. Confirm Setup
+Refresh phpMyAdmin and verify that `polls_db` appears in the left sidebar, with both `users` and `polls` tables inside it.
+
+All page and SQL functionality is now operational. Navigate freely between pages within the XAMPP project folder.
+
+---
+
+## Database Reference
+
+**Database name:** `polls_db`
+
+**Description:** `polls_db` supports Pollify, a web-based polling application where users create and participate in public and private polls. It manages user authentication, poll creation, voting logic, and access control. A `permissions` field indicates the user role, granting access to admin tools when signed in.
+
+---
+
+### Tables
+
+#### `users`
+Stores user account details.
+
+| Column | Type | Description |
+|---|---|---|
+| `user_id` | INT (PK) | Primary key; uniquely identifies each user |
+| `username` | VARCHAR(50) | Username for login and display |
+| `email` | VARCHAR(100) | User email address |
+| `password_hash` | VARCHAR(255) | Hashed password for secure authentication |
+| `created_at` | DATETIME | Timestamp of account creation |
+| `last_login` | DATETIME | Timestamp of most recent login |
+| `permissions` | INT | User role: `3` = admin, `2` = regular user |
+
+#### `polls`
+Stores individual polls and voting data.
+
+| Column | Type | Description |
+|---|---|---|
+| `poll_id` | INT (PK) | Primary key; uniquely identifies each poll |
+| `user_id` | INT (FK) | References poll creator; NULL for anonymous polls |
+| `prompt` | TEXT | The poll question or statement |
+| `option_a`, `option_b` | VARCHAR(255) | The two voting options |
+| `a_count`, `b_count` | INT | Vote tallies for each option |
+| `is_public` | BOOLEAN | Whether the poll is publicly accessible |
+| `created_at` | DATETIME | Timestamp when the poll was created |
+| `voter_ids` | TEXT | Stores voter IDs to prevent duplicate votes |
+
+---
+
+### Relationships
+
+**`polls.user_id` → `users.user_id`**
+One-to-many. A user can create multiple polls. If a user is deleted, all their polls are removed (`ON DELETE CASCADE`).
