@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}  
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Outfit';
+    background: linear-gradient(135deg, #4f46e5, #2466d1);
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
+
+body.login-page {
+    background-color: #222; /* Dark background instead of gradient */
+}
+
+h1 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #222;
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+.nav-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-group a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: background 0.3s;
+    border-radius: 4px;
+}
+
+.nav-group a:hover {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    user-select: none;
+    font-style: italic;
+}
+
+.logo-text .accent {
+    color: #60a5fa; /* light blue accent */
+}
+
+
+/* Hero section */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background: linear-gradient(135deg, #4f46e5, #2466d1);
+    color: white;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+
+.hero a {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.hero-slide {
+    display: none;
+    animation: fade 1s ease-in-out;
+}
+
+.hero-slide.active {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-controls {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.hero-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.hero-dots .dot.active {
+    background-color: white;
+}
+
+#hero-pause {
+    background: none;
+    border: 1px solid white;
+    padding: 6px 14px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.hero-pause-wrap {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#hero-pause:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.cta-button {
+    background-color: white;
+    color: #3b82f6;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e0e7ff;
+}
+
+/* Feature section */
+.features {
+    background-color: #fff;
+    padding: 4rem 2rem;
+    background-color: #222;
+}
+
+.features-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    text-align: center;
+    background-color: #222;
+}
+
+.feature-card {
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: #1f2937;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.form-group {
+    margin-top: 15px;
+}
+
+/* footer */
+.footer {
+    background-color: #222;
+    padding: 1rem;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+.footer-center {
+    text-align: center;
+    flex: 1;
+}  
+
+/* Poll Grid Layout */
+
+.poll-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: center;
+}
+
+.poll-container p {
+    color: white;
+}
+
+.poll-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    gap: 2.5rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+/* Poll Card Styles */
+.poll-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e1e1e1;
+}
+
+.poll-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.poll-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.poll-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.poll-stats {
+    margin: 1rem 0;
+}
+
+.poll-stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.poll-stat span:first-child {
+    font-weight: bold;
+}
+
+.poll-total {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ddd;
+}
+
+.poll-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+/* Sorting Controls */
+.sort-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.sort-controls select, .sort-controls button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.sort-controls button.active {
+    background: #3498db;
+    color: white;
+}
+
+.sort-controls span {
+    text-align: center;
+}
+
+/* Create form */
+.create h2  {
+    color: lightgray;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.poll-form {
+    text-align: center;
+    color: lightgray;
+}
+
+/* Login form CSS */
+.content-login {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    color: white;
+}
+
+.content-login h2 {
+    text-align: center;
+}
+
+.title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    display: block;
+    text-align: center;
+}
+
+.welcome-message {
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    color: #333;
+}
+
+.welcome-message h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.welcome-message a {
+    color: #2466d1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.welcome-message a:hover {
+    text-decoration: underline;
+}
+
+
+.welcome-message a.logout-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #2466d1;
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.welcome-message a.logout-btn:hover {
+    background-color: #1a4b9e;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin: 5px 0 10px;
+}
+
+
+/* Forms */
+
+/* Add these rules to control form visibility */
+#login-container {
+    display: none; /* Hide login form by default */
+}
+
+#register-form {
+    display: block; /* Show register form by default */
+}
+
+/* For when login form should be visible */
+#login-container.show {
+    display: block;
+}
+
+#register-form.hide {
+    display: none;
+}
+
+.login-form, #register-form {
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px; /* Add max-width for better form sizing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e1e1;
+    color: #333;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: white;
+    color: #333;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2466d1; /* Your blue color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+/* Radio button container - single class */
+.referral-options {
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+/* Radio button labels - only 2 classes needed */
+.referral-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Hover effect only */
+.login-form button:hover {
+    background-color: #1a4b9e; /* Darker blue */
+}
+
+/* Actual radio button styling */
+.referral-options input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #2466d1; /* Makes radio buttons blue */
+}
+/* Radio button dot when selected */
+.referral-options input[type="radio"]:checked::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 3px;
+    background: #2466d1;
+    border-radius: 50%;
+}
+
+/* Weather */
+#weather {
+    font-size: 14px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+
+
+
+/* "voted" message */
+.voted-message {
+    margin-top: 10px;
+    color: #4caf50;
+    font-weight: bold;
+}
+.vote-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .poll-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .poll-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    }
+}
