@@ -22,6 +22,7 @@ Pollify is a full-stack web application that lets users create custom polls, sha
 - **User authentication** — Secure register/login system with session management
 - **Share polls** — Each poll gets a shareable link for distribution
 - **Responsive UI** — Usable across desktop and mobile browsers
+- **Built-in Weather API** — Fetches and dynamically updates the current temperature in Ottawa
 
 ---
 
